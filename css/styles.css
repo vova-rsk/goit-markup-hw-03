@@ -42,6 +42,13 @@ a {
   text-decoration: none;
 }
 
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* Точечное снятие маркера со списков */
 .navigation-list,
 .header-contacts-list,
@@ -52,6 +59,8 @@ a {
 .portfolio-button-list,
 .portfolio-work-list {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 /* Задания базовых свойств елементам страниц */
@@ -97,6 +106,9 @@ body {
 
 /* Оформление текста из навигации в header*/
 .navigation-list a {
+  display: block; /***/
+  padding-top: 32px; /***/
+  padding-bottom: 32px; /***/
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -131,6 +143,7 @@ body {
 
 /* Оформление заголовка в секции hero */
 .hero-title {
+  margin-bottom: 30px;
   font-weight: 900;
   font-size: 44px;
   line-height: 1.36;
@@ -138,23 +151,29 @@ body {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
+  outline: 1px solid tomato;
 }
 
 /* Оформление кнопки "Заказать услугу" в секции hero */
 .hero-button {
-  width: 200px;
-  height: 50px;
+  display: block; /***/
+  margin-left: auto; /***/
+  margin-right: auto; /***/
+  /* width: 200px;
+  height: 50px; */
+  padding: 10px 32px; /***/
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: 0.06em;
   color: var(--current-text-color);
-  text-align: center;
+  /* text-align: center; */
   background-color: var(--current-bg-color);
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   border-radius: 4px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  outline: 1px solid tomato;
 }
 
 /* Оформление подзаголовков в секции "Наши преимущества" */
@@ -291,12 +310,52 @@ body {
 }
 
 /*
- * Временный "костыль" для удаления отступа между main и footer в Студия 
+ * Геометрия елементов страниц
  */
-.team-list {
-  margin-bottom: 0;
+
+.container {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  outline: 1px solid tomato;
 }
 
-.mikhail-ermakov .position {
-  margin-bottom: 0;
+.hero > .container {
+  padding-top: 200px;
+  padding-bottom: 200px;
+  outline: 1px solid tomato;
 }
+
+.navigation-list {
+  display: flex;
+  margin-left: 93px;
+  outline: 1px solid tomato;
+}
+
+.navigation-list li:not(:first-child),
+.header-contacts-list li:not(:first-child) {
+  margin-left: 50px;
+}
+
+.header-contacts-list {
+  display: flex;
+  margin-left: auto;
+  outline: 1px solid tomato;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  outline: 1px solid tomato;
+}
+
+.header > .container {
+  display: flex;
+  align-items: center;
+  outline: 1px solid tomato;
+}
+/*
+ * Временный "костыль"
+ */
