@@ -44,9 +44,15 @@ a {
 
 h1,
 h2,
-h3 {
+h3,
+p {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
 }
 
 /* Точечное снятие маркера со списков */
@@ -70,6 +76,17 @@ body {
   letter-spacing: 0.03em;
   color: var(--main-txt-color);
   background-color: var(--main-bg-color);
+}
+
+/* Задание базовых значений блочной модели основному контейнеру секций */
+.container {
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 94px;
+  padding-bottom: 94px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /*
@@ -104,11 +121,47 @@ body {
   color: #fff;
 }
 
+/* оформление flex-ом и позиционирование навигации в header */
+.navigation-list {
+  display: flex;
+  margin-left: 93px;
+}
+
+/* установка меджуелементных интервалов навигации и контактов в header */
+.navigation-list li:not(:first-child),
+.header-contacts-list li:not(:first-child) {
+  margin-left: 50px;
+}
+
+/* оформление flex-ом и позиционирование контактов в header */
+.header-contacts-list {
+  display: flex;
+  margin-left: auto;
+}
+
+/* Оформление лого и навигации в header flex-ом в один ряд */
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+/* Оформление всех елементов header в одну строку через Flex */
+.header > .container {
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Оформление вертикальных отступов логотипа в header */
+.header .logo {
+  margin-top: 24px;
+  margin-bottom: 25px;
+}
+
 /* Оформление текста из навигации в header*/
 .navigation-list a {
-  display: block; /***/
-  padding-top: 32px; /***/
-  padding-bottom: 32px; /***/
+  display: block;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -141,6 +194,17 @@ body {
   color: var(--accent-color);
 }
 
+/* Добавление нижнего подчеркивания в header */
+.header {
+  border-bottom: 1px solid #ececec;
+}
+
+/* Задание вертикальных отступов в hero */
+.hero > .container {
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+
 /* Оформление заголовка в секции hero */
 .hero-title {
   margin-bottom: 30px;
@@ -151,29 +215,46 @@ body {
   color: #fff;
   text-align: center;
   text-transform: uppercase;
-  outline: 1px solid tomato;
 }
 
 /* Оформление кнопки "Заказать услугу" в секции hero */
 .hero-button {
-  display: block; /***/
-  margin-left: auto; /***/
-  margin-right: auto; /***/
-  /* width: 200px;
-  height: 50px; */
-  padding: 10px 32px; /***/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 32px;
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
   letter-spacing: 0.06em;
   color: var(--current-text-color);
-  /* text-align: center; */
+  text-align: center;
   background-color: var(--current-bg-color);
-  /* border: 1px solid #000; */
+  border: none;
   border-radius: 4px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-  outline: 1px solid tomato;
+}
+
+/* Обнуление верхнего отступа в секции Наши преимущества */
+.advantages > .container {
+  padding-bottom: 0;
+}
+
+/* Выстраивание горизонтально кентента секции Наши преимущества */
+.advantages-list {
+  display: flex;
+  flex-basis: calc(100% / 4 - 30px);
+}
+
+/* Задание отступов между блоками с описанием преимуществ */
+.advantages-list > li:not(:first-child) {
+  margin-left: 30px;
+}
+
+/* Задание отступа в заголовке */
+.advantages-list h3 {
+  margin-bottom: 10px;
 }
 
 /* Оформление подзаголовков в секции "Наши преимущества" */
@@ -195,6 +276,18 @@ body {
   color: var(--secondary-txt-color);
 }
 
+/* Нижний отступ от заголовков Чем мы занимаемся и Наша команда */
+.case-title,
+.team-title {
+  margin-bottom: 50px;
+}
+
+/* Выравнивание горизонтально кентента Чем мы занимаемся */
+.case-list {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* Текстовое формление заголовков в секциях "Чем мы занимаемся" и "Наша команда" */
 .case-title,
 .team-title {
@@ -204,16 +297,46 @@ body {
   text-align: center;
 }
 
-/* Текстовое оформление имен в секции "Наша команда" */
-.team-list .name {
+/* Разметка сетки с карточкамы сотрудников в Студия */
+.team-list {
+  /* Расстояние между карточками работников (наша команда) в Студия */
+  --person-set-gap: 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--person-set-gap));
+  margin-top: calc(-1 * var(--person-set-gap));
+}
+
+/* Оформление карточки сотрудника */
+.team-list > .person {
+  flex-basis: calc(100% / 4 - var(--person-set-gap));
+  margin-left: var(--person-set-gap);
+  margin-top: var(--person-set-gap);
+
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+
+/* Оформление вертикальных отступов текстовой части карточки */
+.person .person-container {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* Оформление имен в секции "Наша команда" */
+.person .name {
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
   text-align: center;
 }
 
-/* Текстовое оформление именования должностей в секции "Наша команда" */
-.team-list .position {
+/* Оформление именования должностей в секции "Наша команда" */
+.person .position {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.19;
@@ -221,8 +344,16 @@ body {
   text-align: center;
 }
 
+/* Выстраивание кнопок в портфолио в ряд с помощью flex */
+.portfolio-button-list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
 /* Базовое оформление кнопок секции "Портфолио" на странице Портфолио */
 .portfolio-button-list button {
+  padding: 6px 22px;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.63;
@@ -236,8 +367,6 @@ body {
 
 /* Стилизация активированной кнопки "Все" секции "Портфолио" */
 .portfolio-button-list .button-all {
-  width: 73px;
-  height: 38px;
   color: var(--current-text-color);
   background-color: var(--current-bg-color);
   border-radius: 4px;
@@ -245,28 +374,9 @@ body {
     0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
-/* Задание размеров кнопки "Веб-сайты" секции "Портфолио" */
-.portfolio-button-list .button-website {
-  width: 128px;
-  height: 38px;
-}
-
-/* Задание размеров кнопки "Приложения" секции "Портфолио" */
-.portfolio-button-list .button-app {
-  width: 145px;
-  height: 38px;
-}
-
-/* Задание размеров кнопки "Дизайн" секции "Портфолио" */
-.portfolio-button-list .button-design {
-  width: 103px;
-  height: 38px;
-}
-
-/* Задание размеров кнопки "Маркетинг" секции "Портфолио" */
-.portfolio-button-list .button-marketing {
-  width: 130px;
-  height: 38px;
+/* Задание интервалов между кнопок секции "Портфолио" */
+.portfolio-button-list > li:not(:last-child) {
+  margin-right: 8px;
 }
 
 /* Добавление эффектов hover и focus кнопкам секции "Портфолио" */
@@ -278,6 +388,7 @@ body {
 
 /* Текстовое оформление названий выполненых работ секции "Портфолио" */
 .portfolio-work-list .title {
+  margin-bottom: 4px;
   font-weight: 700;
   font-size: 18px;
   line-height: 2;
@@ -290,6 +401,47 @@ body {
   font-size: 16px;
   line-height: 1.88;
   color: var(--secondary-txt-color);
+}
+
+/* Разметка сетки с карточкамы выполненных работ в Портфолио */
+.portfolio-work-list {
+  /* Расстояние между карточками в Портфолио */
+  --card-set-gap: 30px;
+
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(-1 * var(--card-set-gap));
+  margin-top: calc(-1 * var(--card-set-gap));
+}
+
+/* Оформление карточки работы*/
+.portfolio-work-list > .card {
+  flex-basis: calc(100% / 3 - var(--card-set-gap));
+  margin-left: var(--card-set-gap);
+  margin-top: var(--card-set-gap);
+  background-color: #ffffff;
+  border: 1px solid #eeeeee;
+}
+
+/* Отступы текста в карточке */
+.card .card-container {
+  padding: 20px 24px;
+}
+
+/* Оформленеие вертикальных отступов основного контейнера в footer */
+.footer > .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Оформление вертикальных отступов между текстом в footer */
+.footer .logo {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.footer-contacts-list > li {
+  margin-top: 9px;
 }
 
 /* Текстовое оформление елементов адреса в footer */
@@ -310,52 +462,17 @@ body {
 }
 
 /*
- * Геометрия елементов страниц
+ * Проверка размещения контента с помощью рамки outline
  */
-
-.container {
-  width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+/* * div,
+* ul,
+* li,
+* h1,
+* h2,
+* h3,
+* p,
+* a,
+* img,
+* section {
   outline: 1px solid tomato;
-}
-
-.hero > .container {
-  padding-top: 200px;
-  padding-bottom: 200px;
-  outline: 1px solid tomato;
-}
-
-.navigation-list {
-  display: flex;
-  margin-left: 93px;
-  outline: 1px solid tomato;
-}
-
-.navigation-list li:not(:first-child),
-.header-contacts-list li:not(:first-child) {
-  margin-left: 50px;
-}
-
-.header-contacts-list {
-  display: flex;
-  margin-left: auto;
-  outline: 1px solid tomato;
-}
-
-.navigation {
-  display: flex;
-  align-items: center;
-  outline: 1px solid tomato;
-}
-
-.header > .container {
-  display: flex;
-  align-items: center;
-  outline: 1px solid tomato;
-}
-/*
- * Временный "костыль"
- */
+} */
